@@ -7,6 +7,7 @@ package db;
 
 import domen.IndexSlider;
 import domen.PhotoGalleries;
+import domen.Portfolios;
 import domen.Users;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -158,6 +159,48 @@ public class DbConnection {
         }
         
          public static int countUsers (String query) {
+        int counter = 0;
+
+        try {
+
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            System.out.println(query);
+
+            while (rs.next()) {
+                counter = rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return counter;
+        
+        public static Portfolios getPortfolios (String query){
+            Portfolios port = new Portfolios();
+            try {
+            Statement st = conn.createStatement();
+            ResultSet rs =  st.executeQuery(query);
+            
+            System.out.println(query);
+            
+            while(rs.next()){
+                port.setId(rs.getInt("id"));
+                port.setFirstName(rs.getString(2));
+                port.setCharacteristic1(rs.getString("characteristic1"));
+                port.setCharacteristic2(rs.getString("characteristic2"));
+               
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return port;
+        }
+        
+         public static int countPortfolios (String query) {
         int counter = 0;
 
         try {

@@ -26,4 +26,8 @@ public class HomePage extends Page{
         clickOnElement(driver, By.xpath("//*[@id='side-menu']/li[6]/ul/li[1]/a"));
     }
     
+    public void clickOnPortfolios (WebDriver driver){
+        clickOnElement(driver, By.xpath("//*[@id='side-menu']/li[7]/ul/li[1]/a"));
+    }
+    
 }

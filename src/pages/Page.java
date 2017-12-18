@@ -54,8 +54,8 @@ public class Page {
     }
     
     private WebElement findLastRow (WebDriver driver){
-//        waitForElementVisibility(driver, By.tagName("table"));
-        driver.findElement(By.tagName("table"));
+        waitForElementVisibility(driver, By.tagName("table"));
+//        driver.findElement(By.tagName("table"));
         WebElement table = driver.findElement(By.tagName("tbody"));
         List<WebElement> rows = table.findElements(By.tagName("tr"));
         WebElement lastRow = rows.get(rows.size() - 1);

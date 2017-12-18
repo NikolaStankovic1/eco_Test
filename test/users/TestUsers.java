@@ -84,7 +84,7 @@ public class TestUsers {
          
          Assert.assertEquals(uWeb.getId(), uDb.getId());
          System.out.println("Username is: "+ uWeb.getUsername());
-//         Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
+         Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
 //         Assert.assertEquals(uWeb.getFirstName(), uDb.getFirstName());
 //         Assert.assertEquals(uWeb.getLastName(), uDb.getLastName());
 //         Assert.assertEquals(uWeb.getEmail(), uDb.getEmail());   
