@@ -15,7 +15,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.LogoutPage;
@@ -72,6 +71,7 @@ public class TestIndexSlider {
         IndexSlider indexDb = db.DbConnection.getIndex_slides("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
 
         Assert.assertEquals(indexWeb.getId(), indexDb.getId());
+        System.out.println("IndexSlider title is: "+ indexWeb.getTitle());
         Assert.assertEquals(indexWeb.getTitle(), indexDb.getTitle());
         Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
         Assert.assertEquals(indexWeb.getLinkLabel(), indexDb.getLinkLabel());
@@ -89,8 +89,8 @@ public class TestIndexSlider {
         IndexSlider indexDb = db.DbConnection.getIndex_slides("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
 
         Assert.assertEquals(indexWeb.getId(), indexDb.getId());
+        System.out.println("IndexSlider title is: "+ indexWeb.getTitle());       
         Assert.assertEquals(indexWeb.getTitle(), indexDb.getTitle());
-        System.out.println("IndexSlider title is: "+ indexWeb.getTitle());
         Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
         Assert.assertEquals(indexWeb.getLinkLabel(), indexDb.getLinkLabel());
         Assert.assertEquals(indexWeb.getExternalLink(), indexDb.getExternalLink());

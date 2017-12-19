@@ -26,13 +26,13 @@ public class UsersPages extends Page {
     }
     
     private String sendTextOnFirtstNameField (WebDriver driver){
-        return sendtextOnField(driver, By.id("first_name"));
-//        return sendTextOnField(driver, By.id("first_name"), PageUtilities.getRandomFirstName());
+//        return sendtextOnField(driver, By.id("first_name"));
+        return sendTextOnField(driver, By.id("first_name"), PageUtilities.getRandomFirstName());
     }
     
     private String sendTextOnLastNameField (WebDriver driver){
-        return sendtextOnField(driver, By.id("last_name"));
-//        return sendTextOnField(driver, By.id("last_name"), PageUtilities.getRandomLastName());
+//        return sendtextOnField(driver, By.id("last_name"));
+        return sendTextOnField(driver, By.id("last_name"), PageUtilities.getRandomLastName());
     }
     
     private String sendTextOnEmailField (WebDriver driver) {
@@ -51,10 +51,11 @@ public class UsersPages extends Page {
         } else {
             editLastRow(driver, By.className("glyphicon-pencil"));
         }
-        sendTextOnUsernameField(driver);
-        sendTextOnFirtstNameField(driver);
-        sendTextOnLastNameField(driver);
-        sendTextOnEmailField(driver);
+        u.setUsername(sendTextOnUsernameField(driver));
+        u.setFirstName(sendTextOnFirtstNameField(driver));
+        u.setLastName(sendTextOnLastNameField(driver));
+        u.setEmail(sendTextOnEmailField(driver));
+
         clickOnElement(driver, By.className("btn-success"));
         
         u.setId(getIdFromUsers(driver));

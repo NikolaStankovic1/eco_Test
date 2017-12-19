@@ -25,73 +25,76 @@ import setup.SeleniumProperties;
  * @author Stankovic
  */
 public class TestPhotoGalleries {
-    
+
     private static WebDriver driver;
 //    private static WebDriverWait wait;
     private PhotoGalleriesPages pgp;
-    
 
-@BeforeClass
-        public static void setUpClass() {
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
+    @BeforeClass
+    public static void setUpClass() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
 //            wait = new WebDriverWait(driver, 10);
-            LoginPage lp = new LoginPage();
-            SeleniumProperties.init();        
-            lp.logIn(driver, SeleniumProperties.url, SeleniumProperties.username, SeleniumProperties.password);
-            db.DbConnection.getConnection();
-    }
-    
-    @AfterClass
-        public static void tearDownClass() {
-            db.DbConnection.close();
-            driver.quit();
-    }
-    
-    @Before
-        public void setUp() {
-            HomePage hp = new HomePage();
-            hp.clickOnPhotoGalleries(driver);
-            pgp = new PhotoGalleriesPages();
-    }
-    
-    @After
-        public void tearDown() {
-            LogoutPage lo = new LogoutPage();
-            lo.logOut(driver);
+        LoginPage lp = new LoginPage();
+        SeleniumProperties.init();
+        lp.logIn(driver, SeleniumProperties.url, SeleniumProperties.username, SeleniumProperties.password);
+        db.DbConnection.getConnection();
     }
 
-    
-     @Test
-        public void addPhotoGalleries() {
-        
-            PhotoGalleries pgWeb = pgp.createPhotoGalleries(driver);
-            System.out.println("Photo gallery is saved: ");
-            PhotoGalleries pgDb = db.DbConnection.getPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
-            
-            Assert.assertEquals(pgWeb.getId(), pgDb.getId());
-            Assert.assertEquals(pgWeb.getTitle(), pgDb.getTitle());
-            Assert.assertEquals(pgWeb.getDescription(), pgDb.getDescription());
-        }
-        
-     @Test
-        public void editPhotoGallerise (){
-            
-            PhotoGalleries pgWeb = pgp.editPhotoGalleries(driver);
-            System.out.println("Photo gallery is edited: ");
-            PhotoGalleries pgDb = db.DbConnection.getPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
-            
-            Assert.assertEquals(pgWeb.getId(), pgDb.getId());
-            Assert.assertEquals(pgWeb.getTitle(), pgDb.getTitle());
-            Assert.assertEquals(pgWeb.getDescription(), pgDb.getDescription());
-        }
-        
-      @Test
-        public void deletePhotoGalleries (){
-            
-            PhotoGalleries pgWeb = pgp.deletePhotoGalleries(driver);
-            System.out.println("Photo gallery is deleted: ");
-            int counter = db.DbConnection.countPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
-            Assert.assertEquals(0, counter);           
-        }
+    @AfterClass
+    public static void tearDownClass() {
+        db.DbConnection.close();
+        driver.quit();
+    }
+
+    @Before
+    public void setUp() {
+        HomePage hp = new HomePage();
+        hp.clickOnPhotoGalleries(driver);
+        pgp = new PhotoGalleriesPages();
+    }
+
+    @After
+    public void tearDown() {
+        LogoutPage lo = new LogoutPage();
+        lo.logOut(driver);
+    }
+
+    @Test
+    public void addPhotoGalleries() {
+
+        PhotoGalleries pgWeb = pgp.createPhotoGalleries(driver);
+        System.out.println("Photo gallery is saved: ");
+        PhotoGalleries pgDb = db.DbConnection.getPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
+
+        Assert.assertEquals(pgWeb.getId(), pgDb.getId());
+        System.out.println("Photo Gallery title: "+ pgWeb.getTitle());
+        Assert.assertEquals(pgWeb.getTitle(), pgDb.getTitle());
+        System.out.println("Photo Gallery description: "+ pgWeb.getDescription());
+        Assert.assertEquals(pgWeb.getDescription(), pgDb.getDescription());
+    }
+
+    @Test
+    public void editPhotoGallerise() {
+
+        PhotoGalleries pgWeb = pgp.editPhotoGalleries(driver);
+        System.out.println("Photo gallery is edited: ");
+        PhotoGalleries pgDb = db.DbConnection.getPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
+
+        Assert.assertEquals(pgWeb.getId(), pgDb.getId());
+        System.out.println("Photo Gallery title: "+ pgWeb.getTitle());
+        Assert.assertEquals(pgWeb.getTitle(), pgDb.getTitle());
+        System.out.println("Photo Gallery description: "+ pgWeb.getDescription());
+        Assert.assertEquals(pgWeb.getDescription(), pgDb.getDescription());
+
+    }
+
+    @Test
+    public void deletePhotoGalleries() {
+
+        PhotoGalleries pgWeb = pgp.deletePhotoGalleries(driver);
+        System.out.println("Photo gallery is deleted: ");
+        int counter = db.DbConnection.countPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
+        Assert.assertEquals(0, counter);
+    }
 }

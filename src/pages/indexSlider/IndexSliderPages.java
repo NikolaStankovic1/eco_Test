@@ -93,18 +93,15 @@ public class IndexSliderPages extends Page {
         index.setId(getIdFromIndexSlider(driver));
 
         return index;   
-        
-    }
+}
 
     public IndexSlider createIndexSlider(WebDriver driver) {
           return  commonSteps(driver, "create");
-
-    }
+}
 
     public IndexSlider editIndexSlider(WebDriver driver) {
             return commonSteps(driver, "edit");
-
-    }
+}
 
     public IndexSlider deleteIndexSlider(WebDriver driver) {
         IndexSlider index = new IndexSlider();

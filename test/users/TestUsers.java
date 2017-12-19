@@ -65,14 +65,17 @@ public class TestUsers {
      
          Users uWeb = up.createUsers(driver);
          System.out.println("User is saved: ");
-         Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
+         Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` ORDER BY id DESC LIMIT 1 = " + uWeb.getId());
          
-         Assert.assertEquals(uWeb.getId(), uDb.getId());
+//         Assert.assertEquals(uWeb.getId(), uDb.getId());
          System.out.println("Username is: "+ uWeb.getUsername());
-//         Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
-//         Assert.assertEquals(uWeb.getFirstName(), uDb.getFirstName());
-//         Assert.assertEquals(uWeb.getLastName(), uDb.getLastName());
-//         Assert.assertEquals(uWeb.getEmail(), uDb.getEmail());
+         Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
+         System.out.println("FirstName is: "+ uWeb.getFirstName());
+         Assert.assertEquals(uWeb.getFirstName(), uDb.getFirstName());
+         System.out.println("LastName is: "+ uWeb.getLastName());
+         Assert.assertEquals(uWeb.getLastName(), uDb.getLastName());
+         System.out.println("Email is: "+ uWeb.getEmail());
+         Assert.assertEquals(uWeb.getEmail(), uDb.getEmail());
      }
      
      @Test
@@ -82,12 +85,13 @@ public class TestUsers {
          System.out.println("User is edited: ");
          Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
          
-         Assert.assertEquals(uWeb.getId(), uDb.getId());
-         System.out.println("Username is: "+ uWeb.getUsername());
+//         Assert.assertEquals(uWeb.getId(), uDb.getId());
+
          Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
-//         Assert.assertEquals(uWeb.getFirstName(), uDb.getFirstName());
-//         Assert.assertEquals(uWeb.getLastName(), uDb.getLastName());
-//         Assert.assertEquals(uWeb.getEmail(), uDb.getEmail());   
+         System.out.println("Username is: "+ uWeb.getUsername());
+         Assert.assertEquals(uWeb.getFirstName(), uDb.getFirstName());
+         Assert.assertEquals(uWeb.getLastName(), uDb.getLastName());
+         Assert.assertEquals(uWeb.getEmail(), uDb.getEmail());   
      }
      
      @Test

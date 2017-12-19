@@ -30,7 +30,7 @@ public class PageUtilities {
     public static String getRandomEmail (){
         return getRandomText()+ ("@mail.rs");
     }
-
+    
     public static int getRandomInteger() {
         return (int) (Math.random() * 1000);
     }

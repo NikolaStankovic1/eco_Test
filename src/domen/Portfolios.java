@@ -10,11 +10,12 @@ package domen;
  * @author qa
  */
 public class Portfolios {
-    
+
     private int id;
-    private String firstName;
+    private String title;
     private String characteristic1;
     private String characteristic2;
+    private String description;
     private Boolean deleted;
 
     public int getId() {
@@ -25,12 +26,12 @@ public class Portfolios {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFirstName(String firstname) {
-        this.firstName = firstname;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCharacteristic1() {
@@ -49,6 +50,14 @@ public class Portfolios {
         this.characteristic2 = characteristic2;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -56,6 +65,5 @@ public class Portfolios {
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
-    
-    
+
 }

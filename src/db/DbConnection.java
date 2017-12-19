@@ -146,10 +146,10 @@ public class DbConnection {
             
             while(rs.next()){
                 u.setId(rs.getInt("id"));
-                u.setUsername(rs.getString("username"));
-                u.setEmail(rs.getString("email"));
-                u.setFirstName(rs.getString("first_name"));
-                u.setLastName(rs.getString("last_name"));
+                u.setUsername(rs.getString(2));
+                u.setEmail(rs.getString(5));
+                u.setFirstName(rs.getString(6));
+                u.setLastName(rs.getString(7));
                 
             }
         } catch (SQLException ex) {
@@ -178,6 +178,8 @@ public class DbConnection {
         }
         return counter;
         
+         }
+        
         public static Portfolios getPortfolios (String query){
             Portfolios port = new Portfolios();
             try {
@@ -188,9 +190,10 @@ public class DbConnection {
             
             while(rs.next()){
                 port.setId(rs.getInt("id"));
-                port.setFirstName(rs.getString(2));
+                port.setTitle(rs.getString(2));
                 port.setCharacteristic1(rs.getString("characteristic1"));
                 port.setCharacteristic2(rs.getString("characteristic2"));
+                port.setDescription(rs.getString("description"));
                
                 
             }
