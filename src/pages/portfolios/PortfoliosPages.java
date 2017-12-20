@@ -6,6 +6,7 @@
 package pages.portfolios;
 
 import domen.Portfolios;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,12 +27,22 @@ public class PortfoliosPages extends Page {
         return sendtextOnField(driver, By.id("title"));
     }
 
+//    private void selectDataCategories(WebDriver driver) {
+//        WebElement data = waitForElementClickability(driver, By.className("dropdown-toggle"));
+//        data.click();
+//        Select dataCategories = new Select(data);
+//        dataCategories.selectByValue("18");
+//        dataCategories.selectByValue("20");
+//    }
     private void selectDataCategories(WebDriver driver) {
-        WebElement data = waitForElementClickability(driver, By.className("dropdown-toggle"));
-        data.click();
-        Select dataCategories = new Select(data);
-        dataCategories.selectByValue("18");
-        dataCategories.selectByValue("20");
+        clickOnElement(driver, By.className("multiselect-selected-text"));
+        driver.findElement(By.className("multiselect-container"));
+        List<WebElement> checkboxes = driver.findElements(By.tagName("li"));
+
+        System.out.println("Checkbox size = " + checkboxes.size());
+        
+        checkboxes.get(3).click();
+        
     }
 
     private String sendtextOnCharacteristic1Field(WebDriver driver) {
@@ -86,11 +97,11 @@ public class PortfoliosPages extends Page {
 
     public Portfolios createPortfolios(WebDriver driver) {
         return commonSteps(driver, "create");
-}
+    }
 
     public Portfolios editPortfolios(WebDriver driver) {
         return commonSteps(driver, "edit");
-}
+    }
 
     public Portfolios deleteIndexSlider(WebDriver driver) {
         Portfolios port = new Portfolios();

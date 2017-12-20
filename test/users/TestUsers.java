@@ -65,7 +65,7 @@ public class TestUsers {
      
          Users uWeb = up.createUsers(driver);
          System.out.println("User is saved: ");
-         Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` ORDER BY id DESC LIMIT 1 = " + uWeb.getId());
+         Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` ORDER BY id DESC LIMIT 1 ");
          
 //         Assert.assertEquals(uWeb.getId(), uDb.getId());
          System.out.println("Username is: "+ uWeb.getUsername());

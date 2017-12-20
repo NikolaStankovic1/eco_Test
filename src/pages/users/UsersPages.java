@@ -57,9 +57,7 @@ public class UsersPages extends Page {
         u.setEmail(sendTextOnEmailField(driver));
 
         clickOnElement(driver, By.className("btn-success"));
-        
-        u.setId(getIdFromUsers(driver));
-        
+         
         return u;
     }
     
