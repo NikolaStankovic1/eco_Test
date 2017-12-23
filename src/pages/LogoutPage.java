@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 public class LogoutPage extends Page {
     
     public void logOut (WebDriver driver){
+        waitForElementVisibility(driver, By.className("dropdown-toggle"));
         clickOnElement(driver, By.className("dropdown-toggle"));
         clickOnElement(driver, By.className("fa-sign-out"));
     }

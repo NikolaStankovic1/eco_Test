@@ -26,24 +26,13 @@ public class PortfoliosPages extends Page {
     private String sendTextOnTitleField(WebDriver driver) {
         return sendtextOnField(driver, By.id("title"));
     }
-
-//    private void selectDataCategories(WebDriver driver) {
-//        WebElement data = waitForElementClickability(driver, By.className("dropdown-toggle"));
-//        data.click();
-//        Select dataCategories = new Select(data);
-//        dataCategories.selectByValue("18");
-//        dataCategories.selectByValue("20");
-//    }
-    private void selectDataCategories(WebDriver driver) {
-        clickOnElement(driver, By.className("multiselect-selected-text"));
-        driver.findElement(By.className("multiselect-container"));
-        List<WebElement> checkboxes = driver.findElements(By.tagName("li"));
-
-        System.out.println("Checkbox size = " + checkboxes.size());
-        
-        checkboxes.get(3).click();
-        
-    }
+   
+        private void selectDataCategories(WebDriver driver) {
+        WebElement combobox = waitForElementVisibility(driver, By.id("data_categories"));
+        Select data = new Select(combobox);
+        data.selectByValue("20");
+        data.selectByValue("17");
+}
 
     private String sendtextOnCharacteristic1Field(WebDriver driver) {
         return sendtextOnField(driver, By.id("characteristic1"));
@@ -58,11 +47,11 @@ public class PortfoliosPages extends Page {
     }
 
     private void sendPhoto(WebDriver driver) {
-        sendTextOnField(driver, By.id("portfolio_photo"), System.getProperty("user.dir") + "/src/images/Focal SM9.jpg");
+        sendTextOnField(driver, By.id("portfolio_photo"), System.getProperty("user.dir") + "/src/images/Focal Aria 926.jpg");
     }
 
     private void editPhoto(WebDriver driver) {
-        sendTextOnField(driver, By.id("portfolio_photo"), System.getProperty("user.dir") + "Focal Sopra N2.jpg");
+        sendTextOnField(driver, By.id("portfolio_photo"), System.getProperty("user.dir") + "/src/images/Focal Elear.jpg");
     }
 
     public int getIdFromPortfolios(WebDriver driver) {
@@ -103,7 +92,7 @@ public class PortfoliosPages extends Page {
         return commonSteps(driver, "edit");
     }
 
-    public Portfolios deleteIndexSlider(WebDriver driver) {
+    public Portfolios deletePortfolios (WebDriver driver) {
         Portfolios port = new Portfolios();
         deleteLastRow(driver);
         return port;

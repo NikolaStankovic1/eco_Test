@@ -5,6 +5,7 @@
  */
 package db;
 
+import domen.Categorie;
 import domen.IndexSlider;
 import domen.PhotoGalleries;
 import domen.Portfolios;
@@ -74,7 +75,7 @@ public class DbConnection {
         return index;
         }
         
-        public static int countIndexSliders(String query) {
+        public static int count(String query) {
         int counter = 0;
 
         try {
@@ -114,28 +115,7 @@ public class DbConnection {
         }
         return pg;
         }
-        
-         public static int countPhotoGalleries (String query) {
-        int counter = 0;
-
-        try {
-
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
-            System.out.println(query);
-
-            while (rs.next()) {
-                counter = rs.getInt(1);
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return counter;
-    }
-         
+ 
          public static Users getUsers (String query){
             Users u = new Users();
             try {
@@ -157,28 +137,6 @@ public class DbConnection {
         }
         return u;
         }
-        
-         public static int countUsers (String query) {
-        int counter = 0;
-
-        try {
-
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
-            System.out.println(query);
-
-            while (rs.next()) {
-                counter = rs.getInt(1);
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return counter;
-        
-         }
         
         public static Portfolios getPortfolios (String query){
             Portfolios port = new Portfolios();
@@ -202,27 +160,26 @@ public class DbConnection {
         }
         return port;
         }
-        
-         public static int countPortfolios (String query) {
-        int counter = 0;
-
-        try {
-
+         
+         public static Categorie getCategories(String query){
+             Categorie c = new Categorie();
+            try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
+            ResultSet rs =  st.executeQuery(query);
+            
             System.out.println(query);
-
-            while (rs.next()) {
-                counter = rs.getInt(1);
-
+            
+            while(rs.next()){
+                c.setId(rs.getInt("id"));
+                c.setName(rs.getString("name"));
+                c.setDescription(rs.getString("description"));
+                
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return counter;
-    }
+        return c;
+        }
          
     
 }

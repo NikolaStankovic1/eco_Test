@@ -39,7 +39,7 @@ public class UsersPages extends Page {
         return sendTextOnField(driver, By.id("email"), PageUtilities.getRandomEmail());
     }
     
-    private int getIdFromUsers (WebDriver driver){
+    private int getIdFromUsers (WebDriver driver){ 
         return getIdFromLastRow(driver, "data-user-id");
     }
     
@@ -57,16 +57,22 @@ public class UsersPages extends Page {
         u.setEmail(sendTextOnEmailField(driver));
 
         clickOnElement(driver, By.className("btn-success"));
-         
+        
+                 
         return u;
     }
     
     public Users createUsers (WebDriver driver){
+
         return commonSteps(driver, "create");
     }
     
     public Users editUsers (WebDriver driver){
-        return commonSteps(driver, "edit");
+        Users u = new Users();
+        commonSteps(driver, "edit");
+        u.setId(getIdFromUsers(driver));
+        return u;
+
     }
     
     public Users deleteUsers (WebDriver driver){

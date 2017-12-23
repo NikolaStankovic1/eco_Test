@@ -55,8 +55,8 @@ public class TestUsers {
     
     @After
     public void tearDown() {
-        LogoutPage lo = new LogoutPage();
-        lo.logOut(driver);
+//        LogoutPage lo = new LogoutPage();
+//        lo.logOut(driver);
     }
 
     
@@ -85,7 +85,7 @@ public class TestUsers {
          System.out.println("User is edited: ");
          Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
          
-//         Assert.assertEquals(uWeb.getId(), uDb.getId());
+         Assert.assertEquals(uWeb.getId(), uDb.getId());
 
          Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
          System.out.println("Username is: "+ uWeb.getUsername());
@@ -100,7 +100,7 @@ public class TestUsers {
          Users uWeb = up.deleteUsers(driver);
          System.out.println("User is deleted: ");
          
-         int counter = db.DbConnection.countUsers("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
+         int counter = db.DbConnection.count("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
          Assert.assertEquals(0, counter);
          
      }

@@ -94,7 +94,7 @@ public class TestPhotoGalleries {
 
         PhotoGalleries pgWeb = pgp.deletePhotoGalleries(driver);
         System.out.println("Photo gallery is deleted: ");
-        int counter = db.DbConnection.countPhotoGalleries("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
+        int counter = db.DbConnection.count("SELECT * FROM `cms_photo_galleries` WHERE id = " + pgWeb.getId());
         Assert.assertEquals(0, counter);
     }
 }

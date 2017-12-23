@@ -5,6 +5,7 @@
  */
 package portfolios;
 
+import db.DbConnection;
 import domen.Portfolios;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -78,6 +79,34 @@ public class TestPortfolios {
         Assert.assertEquals(portWeb.getDescription(), portDb.getDescription());
    
     }
+     
+     @Test
+     public void editPortfolios() {
+     
+         Portfolios portWeb = pp.editPortfolios(driver);
+         System.out.println("Portfolio is edited: ");
+         
+         Portfolios portDb = db.DbConnection.getPortfolios("SELECT * FROM `cms_portfolios` WHERE id = " + portWeb.getId());
+
+        Assert.assertEquals(portWeb.getId(), portDb.getId());
+        System.out.println("Portfolio title is: "+ portDb.getTitle());
+        Assert.assertEquals(portWeb.getTitle(), portDb.getTitle());
+        Assert.assertEquals(portWeb.getCharacteristic1(), portDb.getCharacteristic1());
+        Assert.assertEquals(portWeb.getCharacteristic2(), portDb.getCharacteristic2());
+        System.out.println("Portfolio description is: "+ portDb.getDescription());
+        Assert.assertEquals(portWeb.getDescription(), portDb.getDescription());
+     
+     }
+     
+     @Test
+     public void deletePortfolios () {
+     
+         Portfolios portWeb = pp.deletePortfolios(driver);
+         System.out.println("Portfolio is deleted: ");
+         
+         int counter = db.DbConnection.count("SELECT * FROM `cms_portfolios` WHERE id = " + portWeb.getId());
+        Assert.assertEquals(0, counter);
+     }
      
      
 }

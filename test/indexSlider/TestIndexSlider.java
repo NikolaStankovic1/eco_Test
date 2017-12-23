@@ -103,7 +103,7 @@ public class TestIndexSlider {
         IndexSlider indexWeb = isp.deleteIndexSlider(driver);
         System.out.println("Index Slider is deleted:");
 
-        int counter = DbConnection.countIndexSliders("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
+        int counter = db.DbConnection.count("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
         Assert.assertEquals(0, counter);
     }
 
