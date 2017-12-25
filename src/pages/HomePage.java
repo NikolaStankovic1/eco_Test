@@ -33,4 +33,8 @@ public class HomePage extends Page{
     public void clickOnCategories (WebDriver driver){
         clickOnElement(driver, By.xpath("//*[@id='side-menu']/li[7]/ul/li[3]/a"));
     }
+    
+    public void clickOnContactInfo (WebDriver driver){
+        clickOnElement(driver, By.xpath("//*[@id=\"side-menu\"]/li[8]/a"));
+    }
 }

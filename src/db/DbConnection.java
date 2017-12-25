@@ -6,6 +6,7 @@
 package db;
 
 import domen.Categorie;
+import domen.ContactInfo;
 import domen.IndexSlider;
 import domen.PhotoGalleries;
 import domen.Portfolios;
@@ -181,5 +182,30 @@ public class DbConnection {
         return c;
         }
          
+         public static ContactInfo getContactInfo(String query){
+            ContactInfo ci = new ContactInfo();
+            try {
+            Statement st = conn.createStatement();
+            ResultSet rs =  st.executeQuery(query);
+            
+            System.out.println(query);
+            
+            while(rs.next()){
+                ci.setId(rs.getInt("id"));
+                ci.setLocation(rs.getString(2));
+                ci.setAddress(rs.getString(3));
+                ci.setAddressNumber(rs.getInt(4));
+                ci.setLatitude(rs.getString(6));
+                ci.setLongitude(rs.getString(7));
+                ci.setZoom(rs.getInt(8));
+                ci.setPhone(rs.getString(9));
+                ci.setEmail(rs.getString(11));
+                ci.setHours(rs.getString(12));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ci;
+        }
     
 }
