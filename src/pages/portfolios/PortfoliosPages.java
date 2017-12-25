@@ -30,7 +30,7 @@ public class PortfoliosPages extends Page {
         private void selectDataCategories(WebDriver driver) {
         WebElement combobox = waitForElementVisibility(driver, By.id("data_categories"));
         Select data = new Select(combobox);
-        data.selectByValue("20");
+        data.selectByValue("19");
         data.selectByValue("17");
 }
 

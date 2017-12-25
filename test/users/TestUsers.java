@@ -55,8 +55,6 @@ public class TestUsers {
     
     @After
     public void tearDown() {
-//        LogoutPage lo = new LogoutPage();
-//        lo.logOut(driver);
     }
 
     

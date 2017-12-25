@@ -43,6 +43,8 @@ public class TestCategories {
 
     @AfterClass
     public static void tearDownClass() {
+        LogoutPage lo = new LogoutPage();
+        lo.logOut(driver);
         db.DbConnection.close();
         driver.quit();
     }

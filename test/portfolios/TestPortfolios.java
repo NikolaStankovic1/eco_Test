@@ -46,6 +46,8 @@ public class TestPortfolios {
     
     @AfterClass
     public static void tearDownClass() {
+        LogoutPage lo = new LogoutPage();
+        lo.logOut(driver);
         db.DbConnection.close();
         driver.quit();
     }
@@ -59,8 +61,6 @@ public class TestPortfolios {
     
     @After
     public void tearDown() {
-        LogoutPage lo = new LogoutPage();
-        lo.logOut(driver);
     }
 
      @Test

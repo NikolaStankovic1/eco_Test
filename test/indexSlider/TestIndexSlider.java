@@ -46,6 +46,8 @@ public class TestIndexSlider {
 
     @AfterClass
     public static void tearDownClass() {
+        LogoutPage lo = new LogoutPage();
+        lo.logOut(driver);
         db.DbConnection.close();
         driver.quit();
     }
@@ -59,8 +61,7 @@ public class TestIndexSlider {
 
     @After
     public void tearDown() {
-        LogoutPage lo = new LogoutPage();
-        lo.logOut(driver);
+
     }
 
     @Test

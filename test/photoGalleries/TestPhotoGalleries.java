@@ -43,6 +43,8 @@ public class TestPhotoGalleries {
 
     @AfterClass
     public static void tearDownClass() {
+        LogoutPage lo = new LogoutPage();
+        lo.logOut(driver);
         db.DbConnection.close();
         driver.quit();
     }
@@ -56,8 +58,6 @@ public class TestPhotoGalleries {
 
     @After
     public void tearDown() {
-        LogoutPage lo = new LogoutPage();
-        lo.logOut(driver);
     }
 
     @Test
