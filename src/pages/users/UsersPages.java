@@ -49,6 +49,7 @@ public class UsersPages extends Page {
         if (text.equals("create")){
             clickOnAddUser(driver);
         } else {
+            waitForElementVisibility(driver, By.className("table-striped"));
             editLastRow(driver, By.className("glyphicon-pencil"));
         }
         u.setUsername(sendTextOnUsernameField(driver));

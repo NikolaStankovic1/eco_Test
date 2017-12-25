@@ -29,11 +29,7 @@ public class ContactInfoPages extends Page{
         return sendtextOnField(driver, By.id("address"));
     }
     
-    private int sendIntOnAddressNumberField (WebDriver driver){   
-        
-        sjfbgkaebkjvnsieulfbvnjklsdf
-                
-    }
+
     
     
     
