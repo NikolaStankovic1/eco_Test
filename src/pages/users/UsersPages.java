@@ -71,6 +71,7 @@ public class UsersPages extends Page {
     public Users editUsers (WebDriver driver){
         Users u = new Users();
         commonSteps(driver, "edit");
+        waitForElementVisibility(driver, By.tagName("tbody"));
         u.setId(getIdFromUsers(driver));
         return u;
 

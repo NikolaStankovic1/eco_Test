@@ -86,6 +86,21 @@ public class Page {
         clickOnElement(driver, By.className("btn-danger"));
     }
  
+    public int sendNumberOnField ( WebDriver driver, By locator) {
+        WebElement element = waitForElementVisibility(driver, locator);
+        element.clear();
+        int number = PageUtilities.getRandomInteger();
+        element.sendKeys("" + number);
+        return number;
+    }
     
+    public int sendNumberOnField (WebDriver driver, By locator, int number){
+        WebElement element = waitForElementVisibility(driver, locator);
+        element.clear();
+        element.sendKeys("" + number);
+        return number;
+    }
+    
+   
     
 }

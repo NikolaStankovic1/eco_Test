@@ -5,6 +5,7 @@
  */
 package pageUtil;
 
+import java.util.Random;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -32,11 +33,20 @@ public class PageUtilities {
     }
     
     public static int getRandomInteger() {
-        return (int) (Math.random() * 1000);
+        return (int) (Math.random() * 10000);
     }
 
     public static String getRandomUrl() {
         return "http://".concat(getRandomText()).concat(".te");
     }
+    
+    public static int getRandomZoom(){
+        return new Random().nextInt(20 - 1) + 1;
+}
+    public static String getRandomLatitude(){
+    return new Random().nextInt(100) + 100 + "." + (int) (Math.random()*10000);
+}
+
+    
 
 }

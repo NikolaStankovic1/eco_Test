@@ -58,8 +58,6 @@ public class TestCategories {
 
     @After
     public void tearDown() {
-        LogoutPage lo = new LogoutPage();
-        lo.logOut(driver);
     }
 
     @Test
@@ -70,7 +68,7 @@ public class TestCategories {
         Categorie cDb = db.DbConnection.getCategories("SELECT * FROM `cms_portfolios_categories` WHERE id = " + cWeb.getId());
 
         Assert.assertEquals(cWeb.getId(), cDb.getId());
-        System.out.println("IndexSlider title is: "+ cWeb.getName());
+        System.out.println("Categorie title is: "+ cWeb.getName());
         Assert.assertEquals(cWeb.getName(), cDb.getName());
         Assert.assertEquals(cWeb.getDescription(), cDb.getDescription());
     
@@ -84,7 +82,7 @@ public class TestCategories {
         Categorie cDb = db.DbConnection.getCategories("SELECT * FROM `cms_portfolios_categories` WHERE id = " + cWeb.getId());
 
         Assert.assertEquals(cWeb.getId(), cDb.getId());
-        System.out.println("IndexSlider title is: "+ cWeb.getName());
+        System.out.println("Categorie title is: "+ cWeb.getName());
         Assert.assertEquals(cWeb.getName(), cDb.getName());
         Assert.assertEquals(cWeb.getDescription(), cDb.getDescription());
         

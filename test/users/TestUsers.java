@@ -83,7 +83,7 @@ public class TestUsers {
          System.out.println("User is edited: ");
          Users uDb = db.DbConnection.getUsers("SELECT * FROM `cms_users` WHERE id = " + uWeb.getId());
          
-         Assert.assertEquals(uWeb.getId(), uDb.getId());
+//         Assert.assertEquals(uWeb.getId(), uDb.getId());
 
          Assert.assertEquals(uWeb.getUsername(), uDb.getUsername());
          System.out.println("Username is: "+ uWeb.getUsername());
